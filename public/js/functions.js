@@ -30,6 +30,23 @@ function loadDoc() {
     })
 }
 
+//WIP
+function loadAnswer(id) {
+    const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+        url:"fetchAnswer",
+        type:'get',
+        data:{
+            var1: 2,
+            CSRF_TOKEN
+        },
+        success: function(data){
+            $('#nav').html(data)
+        }
+    })
+}
+
 function startTimer(){
     var timeleft = 60;
     

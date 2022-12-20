@@ -16,12 +16,9 @@ class QuizController extends Controller
         return view('app', ['quiz' => $quiz]);
     }
 
+    //WIP
     public function fetchAnswer($id){
-        $answer = DB::table('quiz')
-        ->where('id_quiz', '=', $id)
-        ->get();
-
-        return view('answer', ['answer' => $answers]);
+        return view('answer', ['id' => $id]);
     }
 
     public function fetchData(){

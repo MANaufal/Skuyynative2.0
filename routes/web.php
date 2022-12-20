@@ -21,3 +21,6 @@ Route::get('/', function () {
 Route::get('app', [QuizController::class, 'fetchQuiz']);
 Route::get('fetchData', [QuizController::class, 'fetchData']);
 
+//WIP
+Route::get('fetchAnswer/{id}', [QuizController::class, 'fetchAnswer']);
+
