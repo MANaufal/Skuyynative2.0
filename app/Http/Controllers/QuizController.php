@@ -16,13 +16,9 @@ class QuizController extends Controller
         return view('app', ['quiz' => $quiz]);
     }
 
-    //WIP
-    public function fetchAnswer($id){
-        return view('answer', ['id' => $id]);
-    }
-
-    public function fetchData(){
+    public function fetchData($id){
         $quiz = DB::table('quiz')
+        ->where('id_quiz', '!=', $id)
         ->inRandomOrder()
         ->limit(1)
         ->get();

@@ -15,30 +15,13 @@ function countdown(element){
     }, 1000);
 }
 
-function loadDoc() {
+function loadDoc(quizId) {
     const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
     $.ajax({
-        url:"fetchData",
+        url:"fetchData" + '/' + quizId,
         type:'get',
         data:{
-            CSRF_TOKEN
-        },
-        success: function(data){
-            $('#nav').html(data)
-        }
-    })
-}
-
-//WIP
-function loadAnswer(id) {
-    const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-    $.ajax({
-        url:"fetchAnswer",
-        type:'get',
-        data:{
-            var1: 2,
             CSRF_TOKEN
         },
         success: function(data){

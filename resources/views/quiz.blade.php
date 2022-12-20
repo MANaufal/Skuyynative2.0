@@ -10,9 +10,12 @@ $option1 = $items->option1;
 $option2 = $items->option2;
 $option3 = $items->option3;
 $option4 = $items->option4;
+$quizId = $items->id_quiz;
 @endphp
 
 <script>
+    var quizId = {{ $quizId }};
+
     var option1 = "{{ $option1 }}";
     var option2 = "{{ $option2 }}";
     var option3 = "{{ $option3 }}";
@@ -47,7 +50,7 @@ $option4 = $items->option4;
 
         setTimeout(function(){
             console.log(point);
-            loadDoc();
+            loadDoc(quizId);
         }, 1500);
     }
 </script>

@@ -27,6 +27,7 @@
             $option2 = $items->option2;
             $option3 = $items->option3;
             $option4 = $items->option4;
+            $quizId = $items->id_quiz;
             @endphp
         </div>
 
@@ -47,6 +48,8 @@
 </body>
 
 <script>
+    var quizId = {{ $quizId }};
+
     //print options
     var option1 = "{{ $option1 }}";
     var option2 = "{{ $option2 }}";
@@ -57,7 +60,6 @@
     document.getElementById(2).innerHTML = option2;
     document.getElementById(3).innerHTML = option3;
     document.getElementById(4).innerHTML = option4;
-    console.log(option1, option2, option3, option4);
 
     //selection
     var delay = 2000;
@@ -85,7 +87,7 @@
 
         setTimeout(function(){
             console.log(point);
-            loadDoc();
+            loadDoc(quizId);
         }, 1500);
     }
 
@@ -99,7 +101,7 @@
         if(lastClick >= (Date.now() - delay)){
             return;
         } else {
-            loadDoc();
+            loadDoc(quizId);
         }
     }
 
