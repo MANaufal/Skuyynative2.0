@@ -13,7 +13,7 @@ class QuizController extends Controller
         ->limit(1)
         ->get();
 
-        return view('app', ['quiz' => $quiz]);
+        return view('AduMekanik.quiz', ['quiz' => $quiz]);
     }
 
     public function fetchData($id){
@@ -23,6 +23,6 @@ class QuizController extends Controller
         ->limit(1)
         ->get();
 
-        return view('quiz', ['quiz' => $quiz]);
+        return view('AduMekanik.loadQuiz', ['quiz' => $quiz]);
     }
 }

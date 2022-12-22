@@ -6,9 +6,11 @@
     <script src="{{ asset('js/functions.js') }}" type="text/javascript"></script>
 </head>
 
-<body>
-    <div class="grid place-items-center h-screen">
+@extends('layouts.navbar')
 
+<body>
+    @section('content')
+    <div class="grid max-h-full place-items-center h-5/6 w-full">
         <div class="relative h-full w-full">
             <div id="countdown" class="absolute top-0 right-0 font-bold text-5xl m-12">60</div>
         </div>
@@ -38,14 +40,15 @@
             <button onclick="select(this.value)" id=4 value=4 class="rounded-lg bg-sky-500 text-white p-2 w-72 font-bold text-lg"></button>
         </div>
 
-        <button id="reload" onclick="resetDelay()" style="background-color: #D96480" class="rounded-lg text-white font-bold p-3 w-44 text-3xl">Skip</button>
+        <button id="reload" onclick="resetDelay()" class="hover:bg-zinc-500 bg-zinc-600 rounded-lg text-white font-bold p-3 w-44 text-3xl">Skip</button>
 
         <div id="progress" class="absolute bottom-0 bg-white w-full">
-            <div id="bar" class="bottom-0 bg-blue-300 absolute w-1 h-3">
+            <div id="bar" class="bottom-0 bg-blue-300 w-1 h-3">
             </div>
         </div>
     </div>
 </body>
+
 
 <script>
     var quizId = {{ $quizId }};
@@ -80,7 +83,7 @@
             document.getElementById(value).style.backgroundColor = '#00d41c';
             resetColor(value);
         }else{
-            point = point - 2;
+            point = point - 3;
             document.getElementById(value).style.backgroundColor = '#ff3333';
             resetColor(value);
         }
@@ -141,6 +144,5 @@
     }, 1000);
 
 </script>
-
-
+@endsection
 

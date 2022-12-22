@@ -1,7 +1,3 @@
-function selected(){
-
-}
-
 var timeleft = 60;
 
 function countdown(element){
@@ -19,7 +15,7 @@ function loadDoc(quizId) {
     const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
     $.ajax({
-        url:"fetchData" + '/' + quizId,
+        url:"fetchQuiz" + '/' + quizId,
         type:'get',
         data:{
             CSRF_TOKEN

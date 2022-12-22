@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('app', [QuizController::class, 'fetchQuiz']);
-Route::get('fetchData/{id}', [QuizController::class, 'fetchData']);
+Route::get('home', function(){
+    return view('home');
+});
+
+Route::get('quiz', [QuizController::class, 'fetchQuiz']);
+Route::get('fetchQuiz/{id}', [QuizController::class, 'fetchData']);
 

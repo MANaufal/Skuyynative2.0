@@ -43,7 +43,7 @@ $quizId = $items->id_quiz;
             document.getElementById(value).style.backgroundColor = '#00d41c';
             resetColor(value);
         }else{
-            point = point - 2;
+            point = point - 3;
             document.getElementById(value).style.backgroundColor = '#ff3333';
             resetColor(value);
         }
