@@ -26,15 +26,65 @@ function loadDoc(quizId) {
     })
 }
 
-function startTimer(){
-    var timeleft = 60;
-    
-    var timer = setInterval(function(){
-        if(timeleft <= -1){
-            clearInterval(timer);
-        } else{
-            document.getElementById("countdown").innerHTML = timeleft;
+function loadMessage(chatId){
+
+    setInterval(function(){
+            
+        const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url:"getMessage" + '/' + chatId,
+            type:'get',
+            data:{
+                CSRF_TOKEN
+            },
+            success: function(data){
+                $('#chatmsg').html(data)
+            }
+        })
+
+        console.log('updated');
+
+    }, 1000)
+
+    executed = false;
+
+    var sentChatid = chatId;
+}
+
+function afterLoad(chatId){
+    const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+        url:"getMessage" + '/' + chatId,
+        type:'get',
+        data:{
+            CSRF_TOKEN
+        },
+        success: function(data){
+            $('#chatmsg').html(data)
         }
-        timeleft -= 1;
-    }, 1000);
+    })
+
+    loadMessage(chatId);
+}
+
+function setPoint(point) {
+    const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+        url:"postPoint" + '/' + point,
+        type:'get',
+        data:{
+            CSRF_TOKEN
+        }
+    })
+}
+
+function preventLeaving(){
+    if(timeleft > 0){
+        window.onbeforeunload = function(){
+            return 'Leaving before the times run out will result in penalty.'
+        }
+    }
 }
